@@ -1,0 +1,9 @@
+{
+  "name": "wp2ghost",
+  "description": "Convert Wordpress exports to Ghost imports",
+  "author": "Jon Gjengset <jon@tsp.io>",
+  "dependencies": {
+    "xml-stream": "0.4.x"
+  },
+  "engine": "node >= 0.10"
+}
