@@ -61,6 +61,7 @@ xml.on('endElement: wp:wp_author', function(author) {
   author2user[user.slug] = 1; /* TODO: users.length when Ghost supports importing users */
 });
 
+var slugs = {};
 xml.collect('category');
 xml.preserve('content:encoded', true);
 xml.on('endElement: item', function(item) {
@@ -97,8 +98,22 @@ xml.on('endElement: item', function(item) {
   }
 
   if (!post.slug) {
-    post.slug = 'post-' + (posts.length+1);
+    post.slug = slugify(post.title);
   }
+
+  // This can happen because WP allows posts to share slugs...
+  if (post.slug in slugs) {
+    var slug = slugify(post.title);
+    if (slug === "" || slug in slugs) {
+      var n = 2;
+      post.slug = post.slug.replace(/-\d*$/, '');
+      while (post.slug + "-" + n in slugs) { n++; }
+      slug = post.slug + "-" + n;
+    }
+    console.error("!> slug '" + post.slug + "' was repeated; the post '" + post.title + "' now has slug '" + slug + "'");
+    post.slug = slug;
+  }
+  slugs[post.slug] = post;
 
   if (typeof item.category !== "undefined") {
     for (var i = 0; i < item.category.length; i++) {
@@ -142,4 +157,18 @@ function treathtml(html) {
   html = html.replace(/<pre>(.*?)<\/pre>/g, function(match) { return match.replace(/<p>/g, "\n\n"); });
   html = html.replace(/<p><pre>/g, "<pre>");
   return html;
+}
+
+// From ghost/core/server/models/base.js
+function slugify(title) {
+  // Remove URL reserved chars: `:/?#[]@!$&'()*+,;=` as well as `\%<>|^~£"`
+  slug = title.replace(/[:\/\?#\[\]@!$&'()*+,;=\\%<>\|\^~£"]/g, '')
+              .replace(/(\s|\.)/g, '-')
+              .replace(/-+/g, '-')
+              .toLowerCase();
+
+  slug = slug.charAt(slug.length - 1) === '-' ? slug.substr(0, slug.length - 1) : slug;
+  slug = /^(ghost|ghost\-admin|admin|wp\-admin|wp\-login|dashboard|logout|login|signin|signup|signout|register|archive|archives|category|categories|tag|tags|page|pages|post|posts|user|users|rss)$/g
+         .test(slug) ? slug + '-post' : slug;
+  return slug;
 }
