@@ -18,7 +18,19 @@ following:
 Wordpress authors are parsed, but not added to the output yet because Ghost
 currently only supports editing the primary user during imports.
 
+To run it, you need to have [NodeJS][node] installed. You can then just run:
+
+    $ cd wp2ghost
+    $ npm install
+    $ node ./wp2ghost.js <your-wordpress-xml> > ghost.json
+
+Next, go to http://example.com/ghost/debug and import `ghost.json`, and all your
+content should show up!
+
+Happy migrating!
+
   [wpexport]: http://en.support.wordpress.com/export/
   [wxr]: http://devtidbits.com/2011/03/16/the-wordpress-extended-rss-wxr-exportimport-xml-document-format-decoded-and-explained/
   [gjson]: https://github.com/tryghost/Ghost/wiki/import-format
   [wpghost]: http://wordpress.org/plugins/ghost/
+  [node]: http://nodejs.org/
