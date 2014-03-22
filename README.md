@@ -11,7 +11,7 @@ This is a simple command-line tool that takes a Wordpress XML file as input and
 prints the corresponding Ghost JSON to standard out. It currently converts the
 following:
 
-  - Posts: title, slug, content, page/post, featured, status, publication date
+  - Posts: title, slug, content, page/post, featured, status, creation/publication date
   - Catgeories: name, slug, description (converted to tags)
   - Tags: name, slug
 

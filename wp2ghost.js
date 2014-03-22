@@ -67,9 +67,21 @@ xml.preserve('content:encoded', true);
 xml.on('endElement: item', function(item) {
   if (item['wp:post_type'] != "post" && item['wp:post_type'] != "page") return;
 
-  var date = item['wp:post_date'].match(/(\d{4})-(\d+)-(\d+) (\d+):(\d+):(\d+)/);
+  var date;
+
+  if (item['wp:post_date_gmt'] !== "0000-00-00 00:00:00") {
+    date = item['wp:post_date_gmt'].match(/(\d{4})-(\d+)-(\d+) (\d+):(\d+):(\d+)/);
+  } else {
+    date = item['wp:post_date'].match(/(\d{4})-(\d+)-(\d+) (\d+):(\d+):(\d+)/);
+  }
+
   date = date.map(function(e) { return parseInt(e, 10); });
   var d = new Date(date[1], date[2], date[3], date[4], date[5], date[6], 0);
+
+  var pubDate = d;
+  if (item['pubDate'].match("-0001") === null) {
+    pubDate = new Date(item['pubDate']);
+  }
 
   var post = {
     "id": parseInt(item['wp:post_id'], 10),
@@ -89,7 +101,7 @@ xml.on('endElement: item', function(item) {
     "created_by": 1,
     "updated_at": d.getTime(),
     "updated_by": 1,
-    "published_at": d.getTime(),
+    "published_at": pubDate.getTime(),
     "published_by": 1
   };
 
