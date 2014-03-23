@@ -54,14 +54,14 @@ describe('Post', function(){
 
   describe('creation date', function(){
     it("should respect timezone", function() {
-      p.created_at.should.not.equal(1220381546000);
+      p.created_at.should.not.equal(1217703146000);
     });
     it("should be preserved", function() {
-      p.created_at.should.equal(1220399546000);
+      p.created_at.should.equal(1217721146000);
     });
     it("should be used as last updated", function() {
       // When WP exports post_modified, we can fix this
-      p.updated_at.should.equal(1220399546000);
+      p.updated_at.should.equal(1217721146000);
     });
   });
 
