@@ -24,7 +24,7 @@ To run it, you need to have [NodeJS][node] installed. You can then just run:
 
     $ cd wp2ghost
     $ npm install
-    $ node ./wp2ghost.js <your-wordpress-xml> > ghost.json
+    $ node bin/wp2ghost.js <your-wordpress-xml> > ghost.json
 
 Next, go to http://example.com/ghost/debug and import `ghost.json`, and all your
 content should show up!
