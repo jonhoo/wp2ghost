@@ -2,8 +2,31 @@
   "name": "wp2ghost",
   "description": "Convert Wordpress exports to Ghost imports",
   "author": "Jon Gjengset <jon@tsp.io>",
-  "dependencies": {
-    "xml-stream": "0.4.x"
+  "main": "./lib/wp2ghost.js",
+  "bin": {
+    "wp2ghost": "./bin/wp2ghost.js"
   },
-  "engine": "node >= 0.10"
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonhoo/wp2ghost.git"
+  },
+  "keywords": [
+    "wordpress",
+    "ghost",
+    "export",
+    "blogging"
+  ],
+  "dependencies": {
+    "xml-stream": "0.4.x",
+    "promise": "^4.0.0"
+  },
+  "engine": "node >= 0.10",
+  "devDependencies": {
+    "should": "^3.2.0-beta1",
+    "mocha": "^1.18.2",
+    "chai": "^1.9.1"
+  }
 }
