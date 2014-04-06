@@ -80,8 +80,8 @@ describe('Post', function(){
   });
 
   describe('page', function(){
-    it('should be false for posts', function() {
-      p.page.should.equal(false);
+    it('should be "0" for posts', function() {
+      p.page.should.equal(0);
     });
   });
 });
