@@ -21,7 +21,8 @@
   ],
   "dependencies": {
     "xml-stream": "0.4.x",
-    "promise": "^4.0.0"
+    "promise": "^4.0.0",
+    "html-md": "3.0.x"
   },
   "engine": "node >= 0.10",
   "devDependencies": {
