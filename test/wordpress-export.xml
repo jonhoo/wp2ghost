@@ -71,7 +71,22 @@
 
         Proin cursus, libero non auctor faucibus, urna mi vestibulum orci, sit amet fermentum nibh purus eget enim. Aenean aliquet ligula nec nulla. Praesent sit amet lorem vitae massa hendrerit auctor. Sed sit amet urna. Aenean sapien nunc, imperdiet a, pharetra in, consequat eu, neque. Phasellus vel sem gravida augue consequat tempor. Curabitur eget mauris at pede varius facilisis.
 
-        Morbi ut sapien. Morbi arcu mauris, suscipit congue, placerat sit amet, suscipit a, ante. Donec aliquet dui ac nunc. Mauris magna quam, aliquet quis, viverra eu, fringilla eget, purus. Donec tristique pretium sem.]]></content:encoded>
+        Morbi ut sapien. Morbi arcu mauris, suscipit congue, placerat sit amet, suscipit a, ante. Donec aliquet dui ac nunc. Mauris magna quam, aliquet quis, viverra eu, fringilla eget, purus. Donec tristique pretium sem.
+  
+<h2>Shortcodes</h2>
+
+<h3>Video (With fallback)</h3>
+[video src="source.mp4"]
+[video mp4="source.mp4" ogv="source.ogv"]
+
+<h3>Audio (with fallback)</h3>
+[audio src="source.mp3"]
+[audio ogg="source.ogg" wav="source.wav" mp3="source.mp3"]
+
+<h3>Captions</h3>        
+[caption id="attachment_1" align="alignright" width="150"]<a href="#"><img class="wp-image-1" alt="Sample Image" src="foo.jpg" width="150" height="150" /></a> FooBar Caption[/caption]
+
+        ]]></content:encoded>
       <excerpt:encoded><![CDATA[]]></excerpt:encoded>
       <wp:post_id>4</wp:post_id>
       <wp:post_date>2008-08-02 19:52:26</wp:post_date>

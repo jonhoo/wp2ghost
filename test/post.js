@@ -84,4 +84,27 @@ describe('Post', function(){
       p.page.should.equal(0);
     });
   });
+
+  describe('shortcodes', function(){
+    it('should replace caption shortcodes', function() {
+      p.markdown.search('<a href="#"><img class="wp-image-1" alt="Sample Image" src="foo.jpg" width="150" height="150" /></a> FooBar Caption')
+                .should.not.equal(-1);
+    });
+    it('should replace audio shortcodes for a single source', function(){
+      p.markdown.search('<audio controls><source src="source.mp3"></audio>')
+                .should.not.equal(-1);
+    });
+    it('should replace audio shortcodes for a multiple sources', function(){
+      p.markdown.search('<audio controls><source src="source.ogg"><source src="source.wav"><source src="source.mp3"></audio>')
+                .should.not.equal(-1);
+    });
+    it('should replace video shortcodes for a single source', function(){
+      p.markdown.search('<video controls><source src="source.mp4" type="video/mp4"></video>')
+                .should.not.equal(-1);
+    });
+    it('should replace video shortcodes for multiple sources', function(){
+      p.markdown.search('<video controls><source src="source.mp4" type="video/mp4"><source src="source.ogv" type="video/ogv"></video>')
+                .should.not.equal(-1);
+    });
+  });
 });
