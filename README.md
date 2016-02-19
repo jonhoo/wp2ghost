@@ -26,8 +26,8 @@ To run it, you need to have [NodeJS][node] installed. You can then just run:
     $ npm install
     $ node bin/wp2ghost.js <your-wordpress-xml> > ghost.json
 
-Next, go to http://example.com/ghost/debug and import `ghost.json`, and all your
-content should show up!
+Next, go to http://example.com/admin, select Labs in the menu on the
+left, and import `ghost.json`. All your content should now show up!
 
 Happy migrating!
 
