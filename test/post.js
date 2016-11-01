@@ -10,7 +10,7 @@ before(function(done) {
 	g = data.data;
 	p = g.posts[0];
 	post_missing_both_post_fields = g.posts[1];
-	post_missing_both_post_date_gmt = g.posts[2];
+	post_missing_post_date_gmt = g.posts[2];
 	done();
     },
             function(err)  { done(new Error(err)); });
@@ -36,7 +36,7 @@ describe('Posts', function(){
   });
   describe('post without post_date_gmt', function(){
     it("should exist", function() {
-      if (!post_missing_both_post_date_gmt)
+      if (!post_missing_post_date_gmt)
         throw new Exception();
     });
   });
@@ -90,13 +90,17 @@ describe('Posts', function(){
 
   describe('Post date fallbacks', function(){
     describe('no post_date_gmt or post_date', function(){
-      it("should return a default year 0000-00-00 00:00:00 BC", function() {
-        post_missing_both_post_fields.created_at.should.equal(-2211753600000);
+      it("should return a default year 1970-01-01 00:00:00 AC", function() {
+        var date = new Date("1970-01-01 00:00:00 UTC");
+        var unixtime = date.getTime()
+        post_missing_both_post_fields.created_at.should.equal(unixtime);
       });
     });
     describe('no post_date_gmt', function(){
       it("should fallback to post_date", function() {
-          post_missing_both_post_date_gmt.created_at.should.equal(1303116069000);
+        var date = new Date("2011-04-18 08:41:09 UTC");
+        var unixtime = date.getTime()
+        post_missing_post_date_gmt.created_at.should.equal(unixtime);
       });
     });
   });

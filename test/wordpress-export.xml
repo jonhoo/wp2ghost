@@ -118,7 +118,7 @@ It has multiple lines, some <code>code</code>, and a bit more text.]]></wp:comme
     </item>
 
   <item>
-    <!-- An post missing both post_date_gmt and post_date -->
+    <!-- A post missing both post_date_gmt and post_date -->
     <pubDate>Mon, 18 Apr 2011 08:41:09 +0000</pubDate>
     <content:encoded>stuff</content:encoded>
     <wp:post_type>post</wp:post_type>
@@ -126,7 +126,7 @@ It has multiple lines, some <code>code</code>, and a bit more text.]]></wp:comme
   </item>
 
   <item>
-    <!-- An post missing post_date_gmt but post_date is present -->
+    <!-- A post missing post_date_gmt but post_date is present -->
     <pubDate>Mon, 18 Apr 2011 08:41:09 +0000</pubDate>
     <content:encoded>stuff</content:encoded>
     <wp:post_date>2011-04-18 08:41:09</wp:post_date>
