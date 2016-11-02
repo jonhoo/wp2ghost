@@ -6,7 +6,13 @@ var g;
 var p;
 
 before(function(done) {
-  when.then(function(data) { g = data.data; p = g.posts[0]; done(); },
+    when.then(function(data) {
+	g = data.data;
+	p = g.posts[0];
+	post_missing_both_post_fields = g.posts[1];
+	post_missing_post_date_gmt = g.posts[2];
+	done();
+    },
             function(err)  { done(new Error(err)); });
 });
 
@@ -16,11 +22,22 @@ describe('Wordpress XML', function() {
   });
 });
 
-describe('Post', function(){
-  describe('itself', function(){
+describe('Posts', function(){
+  describe('simple post with text', function(){
     it("should exist", function() {
-      p = g.posts[0];
       if (!p) throw new Exception();
+    });
+  });
+  describe('post without both date fields', function(){
+    it("should exist", function() {
+      if (!post_missing_both_post_fields)
+        throw new Exception();
+    });
+  });
+  describe('post without post_date_gmt', function(){
+    it("should exist", function() {
+      if (!post_missing_post_date_gmt)
+        throw new Exception();
     });
   });
 
@@ -68,6 +85,23 @@ describe('Post', function(){
   describe('publication date', function(){
     it("should be preserved", function() {
       p.published_at.should.equal(1217724746000);
+    });
+  });
+
+  describe('Post date fallbacks', function(){
+    describe('no post_date_gmt or post_date', function(){
+      it("should return a default year 1970-01-01 00:00:00 AC", function() {
+        var date = new Date("1970-01-01 00:00:00 UTC");
+        var unixtime = date.getTime()
+        post_missing_both_post_fields.created_at.should.equal(unixtime);
+      });
+    });
+    describe('no post_date_gmt', function(){
+      it("should fallback to post_date", function() {
+        var date = new Date("2011-04-18 08:41:09 UTC");
+        var unixtime = date.getTime()
+        post_missing_post_date_gmt.created_at.should.equal(unixtime);
+      });
     });
   });
 
