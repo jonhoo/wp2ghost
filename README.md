@@ -20,7 +20,9 @@ following:
 Wordpress authors are parsed, but not added to the output yet because Ghost
 currently only supports editing the primary user during imports.
 
-To run it, you need to have [NodeJS][node] installed. You can then just run:
+To run it, you need to have [NodeJS][node] installed (and
+[maybe](https://github.com/jonhoo/wp2ghost/issues/12) also [Python][python]). You
+can then just run:
 
     $ cd wp2ghost
     $ npm install
@@ -36,3 +38,4 @@ Happy migrating!
   [gjson]: https://github.com/tryghost/Ghost/wiki/import-format
   [wpghost]: http://wordpress.org/plugins/ghost/
   [node]: http://nodejs.org/
+  [python]: https://www.python.org/
