@@ -35,7 +35,7 @@ Happy migrating!
 
   [wpexport]: http://en.support.wordpress.com/export/
   [wxr]: http://devtidbits.com/2011/03/16/the-wordpress-extended-rss-wxr-exportimport-xml-document-format-decoded-and-explained/
-  [gjson]: https://github.com/tryghost/Ghost/wiki/import-format
+  [gjson]: https://docs.ghost.org/api/migration/#json-file-structure
   [wpghost]: http://wordpress.org/plugins/ghost/
   [node]: http://nodejs.org/
   [python]: https://www.python.org/
