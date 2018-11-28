@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/jonhoo/wp2ghost.svg?branch=master)](https://travis-ci.org/jonhoo/wp2ghost)
 
 This script will convert WordPress XML [exports][wpexport] ([WXR][wxr]) to the
-Ghost [JSON format][gjson]. This JSON file can then be directly imported using
-the Ghost debug interface.
+Ghost (1.x [for now][1x]) [JSON format][gjson]. This JSON file can then
+be directly imported using the Ghost debug interface.
 
 While there is a [WordPress plugin][wpghost] that will export to the Ghost
 format directly, it only seems to work some of the time, and users of
@@ -39,3 +39,4 @@ Happy migrating!
   [wpghost]: http://wordpress.org/plugins/ghost/
   [node]: http://nodejs.org/
   [python]: https://www.python.org/
+  [1x]: https://github.com/jonhoo/wp2ghost/issues/13
