@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 var wp2ghost = require('../lib/wp2ghost.js');
 var path = require('path');
 
