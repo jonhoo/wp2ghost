@@ -26,6 +26,11 @@ can then just run:
 
     $ cd wp2ghost
     $ npm install
+    $ GHOST_VERSION="<your-ghost-version>" node bin/wp2ghost.js <your-wordpress-xml> > ghost.json
+
+
+If you prefer not to specify the Ghost version, you can run the command directly (it defaults to version 6.0):
+
     $ node bin/wp2ghost.js <your-wordpress-xml> > ghost.json
 
 Next, go to http://example.com/ghost, select Labs in the menu on the
